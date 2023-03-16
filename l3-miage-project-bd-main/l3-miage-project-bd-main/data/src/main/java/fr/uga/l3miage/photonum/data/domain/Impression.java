@@ -8,9 +8,24 @@ import java.util.Set;
 
 
 @Entity
+@Table(name = "Impression")
 public class Impression {
 
+    // ---- Attributs ----
+
+    @Column(name = "idImpression")
     @Id
     @GeneratedValue
-    private Long id; // remplacer car String si besoin
+    private Long id; // remplacer par String si besoin
+
+    @Column(name = "formatEtQual")
+    @Enumerated
+    private Reference formatEtQual; 
+
+    // ----- Associations -----
+
+    @ManyToOne // voir relation UML
+    private Commande commande;
+
+
 }
