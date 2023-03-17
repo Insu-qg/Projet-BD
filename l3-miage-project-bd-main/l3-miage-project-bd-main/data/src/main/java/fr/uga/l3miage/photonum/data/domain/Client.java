@@ -32,7 +32,7 @@ public class Client {
 
     // ----- Associations -----
 
-    @OneToMany
+    @ManyToMany
     private List<Adresse> adressePostales;
 
     @OneToMany

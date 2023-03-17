@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-
+// ajout model pour heritage
 @Entity
 @Table(name = "Impression")
 public class Impression {
@@ -24,8 +24,9 @@ public class Impression {
 
     // ----- Associations -----
 
-    @OneToOne 
-    private Commande commandeArticle;
+    // à vérifier
+    // @ManyToOne 
+    // private Commande commandeArticle;
 
 
 }

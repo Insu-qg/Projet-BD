@@ -17,15 +17,16 @@ public class Commande {
     public Date dateCommande;
 
     @Column(name = "prixTotal")
-    public float prixTotal;
+    public double prixTotal;
 
     // ----- Associations -----
 
+    // à vérifier
     @OneToOne
     public Client client;
 
     @OneToOne
-    public List<Adresse> adresses;
+    public Adresse adresseLivraison;
 
     @OneToMany
     public List<Impression> articles;

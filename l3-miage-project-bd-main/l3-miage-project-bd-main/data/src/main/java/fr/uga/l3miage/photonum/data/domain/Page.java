@@ -11,20 +11,25 @@ public class Page {
 
     // ---- Attributs ----
 
-    @Column(name = "page")
-    private int page;
+    @Column(name = "idPage")
+    @Id
+    @GeneratedValue
+    private int id;
+
     @Column(name = "numero")
-    public Integer numero;
+    public int numero;
 
     // ----- Associations -----
 
-    // voir comment gérer le 12 -> 1 (UML)
-    @OneToOne
+    
+    @ManyToOne
     public Album album;
 
+    // voir comment gérer le 12 -> 1 (UML)
     @OneToOne
     public Calendrier calendrier;
     
-    @OneToMany
-    public List<Photo> photoDecadre;
+    // à vérifier
+    @ManyToMany
+    public List<Photo> photos;
 }

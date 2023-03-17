@@ -6,12 +6,14 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="Catalogue")
-
 public class Catalogue {
-    @Column
+    
+    @Column(name = "referenceImpr")
     public FormatQual referenceImpr;
-    @Column
+    
+    @Column(name = "typeImpr")
     public String typeImpr;
-    @Column
+    
+    @Column(name = "prixParPhoto")
     public double prixParPhoto;
 }

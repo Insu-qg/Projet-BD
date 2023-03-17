@@ -8,9 +8,10 @@ import jakarta.persistence.*;
 @Table(name = "Album")
 public class Album extends Impression{
 
-    @ManyToOne
+    @Column(name = "titreCouverture")
     public String titreCouverture;
 
+    // à vérifier
     @OneToMany
     private List<Page> pages;
 }

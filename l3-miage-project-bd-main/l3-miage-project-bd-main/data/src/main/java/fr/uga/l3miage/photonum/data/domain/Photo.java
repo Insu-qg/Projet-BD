@@ -18,7 +18,7 @@ public class Photo {
 
     // ----- Associations -----
 
-    @OneToOne
+    @ManyToOne
     private Image image;
 
     @ManyToMany
@@ -31,6 +31,7 @@ public class Photo {
     private List<Cadre> cadres;
 
     @OneToMany
-    private Couverture couverture;
+    private List<Album> albums;
+
 
 }
