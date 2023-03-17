@@ -24,8 +24,8 @@ public class Impression {
 
     // ----- Associations -----
 
-    @ManyToOne // voir relation UML
-    private Commande commande;
+    @OneToOne 
+    private Commande commandeArticle;
 
 
 }
