@@ -18,7 +18,7 @@ public class Photo {
 
     // ----- Associations -----
 
-    @ManyToOne
+    @OneToOne
     private Image image;
 
     @ManyToMany
