@@ -25,10 +25,10 @@ public class Image {
 
     // ----- Associations -----
 
-    @ManyToOne
-    private Client client;
+   @OneToOne
+    private Client proprietaire;
 
     @OneToMany
-    private List<Photo> photos;
+    private List<Photo> retouches;
 
 }

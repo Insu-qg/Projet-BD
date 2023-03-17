@@ -20,12 +20,12 @@ public class Impression {
 
     @Column(name = "formatEtQual")
     @Enumerated
-    private Reference formatEtQual; 
+    private FormatQual formatEtQual; 
 
     // ----- Associations -----
 
-    @ManyToOne // voir relation UML
-    private Commande commande;
+    @OneToOne 
+    private Commande commandeArticle;
 
 
 }

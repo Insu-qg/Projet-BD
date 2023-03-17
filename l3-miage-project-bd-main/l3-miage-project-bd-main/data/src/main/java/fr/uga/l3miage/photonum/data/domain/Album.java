@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 public class Album extends Impression{
 
     @ManyToOne
-    private Couverture couverture;
+    public String titreCouverture;
 
     @OneToMany
     private List<Page> pages;

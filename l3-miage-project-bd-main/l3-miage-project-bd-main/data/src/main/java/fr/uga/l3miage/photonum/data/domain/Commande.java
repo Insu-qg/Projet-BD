@@ -14,19 +14,19 @@ public class Commande {
 
     @Column(name = "dateCommande")
     @DateTimeFormat
-    private Date dateCommande;
+    public Date dateCommande;
 
     @Column(name = "prixTotal")
-    private float prixTotal;
+    public float prixTotal;
 
     // ----- Associations -----
 
-    @ManyToOne
-    private Client client;
+    @OneToOne
+    public Client client;
 
-    @ManyToOne
-    private List<Adresse> adresses;
+    @OneToOne
+    public List<Adresse> adresses;
 
     @OneToMany
-    private List<Impression> impressions;
+    public List<Impression> articles;
 }
