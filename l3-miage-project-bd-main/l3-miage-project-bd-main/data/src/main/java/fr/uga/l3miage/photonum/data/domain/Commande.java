@@ -17,15 +17,27 @@ public class Commande {
     public Date dateCommande;
 
     @Column(name = "prixTotal")
+<<<<<<< HEAD
     public float prixTotal;
 
     // ----- Associations -----
 
+=======
+    public double prixTotal;
+
+    // ----- Associations -----
+
+    // à vérifier
+>>>>>>> 867e22bbfdb4820760ac0ba782e55bf424061c17
     @OneToOne
     public Client client;
 
     @OneToOne
+<<<<<<< HEAD
     public List<Adresse> adresses;
+=======
+    public Adresse adresseLivraison;
+>>>>>>> 867e22bbfdb4820760ac0ba782e55bf424061c17
 
     @OneToMany
     public List<Impression> articles;

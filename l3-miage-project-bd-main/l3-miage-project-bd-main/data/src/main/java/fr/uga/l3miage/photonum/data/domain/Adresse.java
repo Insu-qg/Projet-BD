@@ -11,8 +11,9 @@ import jakarta.persistence.*;
 public class Adresse {
 
     // ---- Attributs ----
-
+    @Column(name = "idAdresse")
     @Id
+    @GeneratedValue
     public Integer idAdresse;
 
     @Column(name = "nomRue")
@@ -29,8 +30,8 @@ public class Adresse {
 
     // ----- Associations -----
 
-    // @OneToMany
-    // private List<Commande> commandes;
+    @OneToMany
+    private List<Commande> commandes;
 
     // @ManyToOne
     // private List<Client> clients;

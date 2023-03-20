@@ -31,6 +31,7 @@ public class Photo {
     private List<Cadre> cadres;
 
     @OneToMany
-    private Couverture couverture;
+    private List<Album> albums;
+
 
 }
