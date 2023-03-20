@@ -8,6 +8,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="Catalogue")
+
 public class Catalogue {
 
     @Id
@@ -21,6 +22,6 @@ public class Catalogue {
     private String typeImpr;
     
     @Column(name = "prixParPhoto")
-    private Long prixParPhoto;
-    
+    public double prixParPhoto;
+
 }

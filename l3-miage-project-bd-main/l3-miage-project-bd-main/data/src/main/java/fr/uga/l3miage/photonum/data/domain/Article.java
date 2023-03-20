@@ -13,7 +13,7 @@ public class Article {
     private Long idArticle;
 
     @Column(name = "prixImpression")
-    private Long prixImpression;
+    private Double prixImpression;
 
     @Column(name = "formatEtQual")
     private FormatQual formatEtQual;

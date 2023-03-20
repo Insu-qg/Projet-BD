@@ -7,11 +7,10 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "Cadre")
 public class Cadre extends Impression{
-    
+
     @Column(name = "miseEnPage")
     public String miseEnPage;
-    
-    // à vérifier
+
     @ManyToMany
     public List<Photo> photoDecadre;
 

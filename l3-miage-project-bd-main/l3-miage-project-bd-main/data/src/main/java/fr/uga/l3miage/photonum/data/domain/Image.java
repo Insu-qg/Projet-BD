@@ -24,7 +24,6 @@ public class Image {
     private Boolean share;
 
     // ----- Associations -----
-
     @ManyToOne
     private Client proprietaire;
 

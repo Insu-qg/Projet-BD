@@ -29,4 +29,6 @@ public class Commande {
 
     @OneToMany
     private List<Article> articles;
+
+
 }

@@ -21,17 +21,4 @@ public class Photo {
     @ManyToOne
     private Image image;
 
-    @ManyToMany
-    private List<Page> pages;
-
-    @ManyToMany
-    private List<Tirage> tirages;
-
-    @ManyToMany
-    private List<Cadre> cadres;
-
-    @OneToMany
-    private List<Album> albums;
-
-
 }

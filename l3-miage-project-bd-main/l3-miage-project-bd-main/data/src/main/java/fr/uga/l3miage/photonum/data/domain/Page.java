@@ -14,22 +14,14 @@ public class Page {
     @Column(name = "idPage")
     @Id
     @GeneratedValue
-    private int id;
+    private Long idPgae;
 
     @Column(name = "numero")
-    public int numero;
+    public Long numero;
 
     // ----- Associations -----
 
-    
-    @ManyToOne
-    public Album album;
 
-    // voir comment gérer le 12 -> 1 (UML)
-    @OneToOne
-    public Calendrier calendrier;
-    
-    // à vérifier
     @ManyToMany
     public List<Photo> photos;
 }
