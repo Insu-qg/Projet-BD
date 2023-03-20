@@ -25,8 +25,12 @@ public class Image {
 
     // ----- Associations -----
 
+<<<<<<< HEAD
+   @OneToOne
+=======
     // à vérifier
     @OneToOne
+>>>>>>> 867e22bbfdb4820760ac0ba782e55bf424061c17
     private Client proprietaire;
 
     // à vérifier

@@ -8,7 +8,11 @@ import jakarta.persistence.*;
 @Table(name = "Album")
 public class Album extends Impression{
 
+<<<<<<< HEAD
+    @ManyToOne
+=======
     @Column(name = "titreCouverture")
+>>>>>>> 867e22bbfdb4820760ac0ba782e55bf424061c17
     public String titreCouverture;
 
     // à vérifier

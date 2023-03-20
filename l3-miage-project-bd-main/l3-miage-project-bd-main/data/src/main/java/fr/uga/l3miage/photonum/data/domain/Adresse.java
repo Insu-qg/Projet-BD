@@ -29,9 +29,9 @@ public class Adresse {
     public Integer codePostal;
 
     // ----- Associations -----
-    
-    // @OneToMany
-    // private List<Commande> commandes;
+
+    @OneToMany
+    private List<Commande> commandes;
 
     // @ManyToOne
     // private List<Client> clients;
