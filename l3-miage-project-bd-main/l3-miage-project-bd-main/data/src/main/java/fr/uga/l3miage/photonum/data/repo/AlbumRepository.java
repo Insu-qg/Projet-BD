@@ -2,6 +2,8 @@ package fr.uga.l3miage.photonum.data.repo;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import fr.uga.l3miage.photonum.data.domain.Album;
 import jakarta.persistence.EntityManager;
 

@@ -36,10 +36,6 @@ public class TirageRepository implements CRUDRepository<Long,Tirage> {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'all'");
     }
-    @Override
-    public Tirage get(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'get'");
-    }
+
     
 }

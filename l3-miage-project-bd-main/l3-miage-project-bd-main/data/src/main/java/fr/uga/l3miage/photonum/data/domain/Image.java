@@ -10,6 +10,9 @@ import jakarta.persistence.*;
 public class Image {
 
     // ---- Attributs ----
+    @Id
+    @GeneratedValue
+    private Long idImage;
 
     @Column(name = "chemin")
     private String chemin;
