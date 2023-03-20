@@ -9,6 +9,9 @@ import jakarta.persistence.*;
 public class Photo {
 
     // ---- Attributs ----
+    @Id
+    @GeneratedValue
+    private Long idPhoto;
 
     @Column(name = "description")
     private String description;
