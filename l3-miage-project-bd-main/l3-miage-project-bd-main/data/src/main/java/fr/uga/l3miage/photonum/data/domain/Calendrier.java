@@ -13,5 +13,4 @@ public class Calendrier extends Impression {
     @OneToMany
     private List<Page> pages;
 
-    
 }

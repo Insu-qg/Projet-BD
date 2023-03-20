@@ -17,11 +17,10 @@ public class Page {
     private Long idPgae;
 
     @Column(name = "numero")
-    public Long numero;
+    private Long numero;
 
     // ----- Associations -----
-
-
     @ManyToMany
-    public List<Photo> photos;
+    private List<Photo> photos;
+
 }
