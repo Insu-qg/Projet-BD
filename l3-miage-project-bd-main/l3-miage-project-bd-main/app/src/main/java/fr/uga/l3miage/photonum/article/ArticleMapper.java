@@ -11,7 +11,7 @@ public interface ArticleMapper {
 
     Collection<ArticleDTO> entityToDTO(Iterable<Article> articles);
 
-    Article dtoToEntity(ArticleDTO impression);
+    Article dtoToEntity(ArticleDTO article);
 
     Collection<Article> dtoToEntity(Iterable<ArticleDTO> articles);
 }

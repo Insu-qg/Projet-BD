@@ -1,14 +1,16 @@
 package fr.uga.l3miage.photonum.image;
 
-public record ImageDTO (
+import fr.uga.l3miage.photonum.data.domain.Client;
 
-    Long id,
-    String infoPriseDeVue,
-    Long resolution,
-    boolean share,
-    String chemin
+public record ImageDTO(
 
+        Long idImage,
+        String infoPriseDeVue,
+        Long resolution,
+        boolean share,
+        String chemin,
+        Client priprietaire
 
 ) {
-    
+
 }

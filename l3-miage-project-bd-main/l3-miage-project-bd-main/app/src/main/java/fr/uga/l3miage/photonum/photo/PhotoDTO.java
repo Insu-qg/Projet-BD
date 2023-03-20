@@ -1,9 +1,11 @@
 package fr.uga.l3miage.photonum.photo;
 
-public record PhotoDTO (
-    String description,
-    String paramRetouche,
-    Long exemplaires
-) {
-    
+import fr.uga.l3miage.photonum.data.domain.Image;
+
+public record PhotoDTO(
+        Long idPhoto,
+        String description,
+        String paramRetouche,
+        Image image) {
+
 }
