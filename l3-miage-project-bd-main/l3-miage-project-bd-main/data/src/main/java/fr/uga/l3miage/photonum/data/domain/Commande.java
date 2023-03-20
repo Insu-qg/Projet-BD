@@ -11,23 +11,22 @@ import jakarta.persistence.*;
 public class Commande {
 
     // ---- Attributs ----
+    @Id
+    @GeneratedValue
+    private Long idCommande;
 
     @Column(name = "dateCommande")
     @DateTimeFormat
-    public Date dateCommande;
+    private Date dateCommande;
 
     @Column(name = "prixTotal")
-    public double prixTotal;
+    private double prixTotal;
 
     // ----- Associations -----
 
-    // à vérifier
-    @OneToOne
-    public Client client;
-
-    @OneToOne
-    public Adresse adresseLivraison;
+    @ManyToOne
+    private Adresse adresseLivraison;
 
     @OneToMany
-    public List<Impression> articles;
+    private List<Article> articles;
 }

@@ -1,11 +1,13 @@
 package fr.uga.l3miage.photonum.data.repo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.uga.l3miage.photonum.data.domain.Tirage;
 import jakarta.persistence.EntityManager;
 
-public class TirageRepository extends CRUDRepository<Long,Tirage> {
+public class TirageRepository implements CRUDRepository<Long,Tirage> {
 
     private final EntityManager entityManager;
 
@@ -16,7 +18,7 @@ public class TirageRepository extends CRUDRepository<Long,Tirage> {
     @Override
     public Tirage save(Tirage tirage) {
         entityManager.persist(tirage);
-        return tirage
+        return tirage;
     }
 
     @Override

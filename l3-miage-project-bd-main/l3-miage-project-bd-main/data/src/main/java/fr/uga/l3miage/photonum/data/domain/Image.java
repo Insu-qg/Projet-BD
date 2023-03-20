@@ -25,12 +25,8 @@ public class Image {
 
     // ----- Associations -----
 
-    // à vérifier
-    @OneToOne
+    @ManyToOne
     private Client proprietaire;
 
-    // à vérifier
-    @OneToMany
-    private List<Photo> retouches;
 
 }

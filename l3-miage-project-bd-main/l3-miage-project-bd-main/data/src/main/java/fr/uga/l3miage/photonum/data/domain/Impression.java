@@ -16,17 +16,7 @@ public class Impression {
     @Column(name = "idImpression")
     @Id
     @GeneratedValue
-    private Long id; // remplacer par String si besoin
-
-    @Column(name = "formatEtQual")
-    @Enumerated
-    private FormatQual formatEtQual; 
-
-    // ----- Associations -----
-
-    // à vérifier
-    // @ManyToOne 
-    // private Commande commandeArticle;
+    private Long idImpression; // remplacer par String si besoin
 
 
 }

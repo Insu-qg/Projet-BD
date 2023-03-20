@@ -2,18 +2,25 @@ package fr.uga.l3miage.photonum.data.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="Catalogue")
 public class Catalogue {
+
+    @Id
+    @GeneratedValue
+    private Long idCatalogue;
     
     @Column(name = "referenceImpr")
-    public FormatQual referenceImpr;
+    private FormatQual referenceImpr;
     
     @Column(name = "typeImpr")
-    public String typeImpr;
+    private String typeImpr;
     
     @Column(name = "prixParPhoto")
-    public double prixParPhoto;
+    private Long prixParPhoto;
+    
 }

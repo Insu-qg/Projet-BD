@@ -14,25 +14,18 @@ public class Adresse {
     @Column(name = "idAdresse")
     @Id
     @GeneratedValue
-    public Integer idAdresse;
+    private Long idAdresse;
 
     @Column(name = "nomRue")
-    public String nomRue;
+    private String nomRue;
 
     @Column(name = "numero")
-    public Integer numero;
+    private Integer numero;
 
     @Column(name = "ville")
-    public String ville;
+    private String ville;
 
     @Column(name = "codePostal")
-    public Integer codePostal;
+    private Integer codePostal;
 
-    // ----- Associations -----
-    
-    // @OneToMany
-    // private List<Commande> commandes;
-
-    // @ManyToOne
-    // private List<Client> clients;
 }

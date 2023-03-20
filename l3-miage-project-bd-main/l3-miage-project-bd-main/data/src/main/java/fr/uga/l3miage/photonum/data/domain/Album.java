@@ -9,9 +9,8 @@ import jakarta.persistence.*;
 public class Album extends Impression{
 
     @Column(name = "titreCouverture")
-    public String titreCouverture;
+    private String titreCouverture;
 
-    // à vérifier
     @OneToMany
     private List<Page> pages;
 }

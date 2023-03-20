@@ -13,10 +13,10 @@ public class Client {
     @Column(name = "idClient")
     @Id
     @GeneratedValue
-    private int id;
+    private Long idClient;
 
-    @Column(name = "adressePostal")
-    private String adressePostal;
+    @Column(name = "adresseMail")
+    private String adresseMail;
 
     @Column(name = "nom")
     private String nom;
@@ -24,16 +24,13 @@ public class Client {
     @Column(name = "prenom")
     private String prenom;
 
-    @Column(name = "adresseMail")
-    private String adresseMail;
-
     @Column(name = "motDePasse")
     private String motDePasse;
 
     // ----- Associations -----
 
     @ManyToMany
-    private List<Adresse> adressePostales;
+    private List<Adresse> adresses;
 
     @OneToMany
     private List<Commande> commandes;
