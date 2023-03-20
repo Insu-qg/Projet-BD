@@ -37,4 +37,7 @@ public class Client {
 
     @OneToMany
     private List<Image> images;
+
+    @OneToMany
+    private List<Impression> impressions;
 }
