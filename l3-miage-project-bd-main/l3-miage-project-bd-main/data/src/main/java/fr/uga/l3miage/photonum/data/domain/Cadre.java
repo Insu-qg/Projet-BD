@@ -9,9 +9,9 @@ import jakarta.persistence.*;
 public class Cadre extends Impression{
 
     @Column(name = "miseEnPage")
-    public String miseEnPage;
+    private String miseEnPage;
 
     @ManyToMany
-    public List<Photo> photoDecadre;
+    private List<Photo> photoDecadre;
 
 }

@@ -10,4 +10,5 @@ public class Tirage extends Impression{
 
     @ManyToMany
     private List<Photo> photosTirage;
+    
 }

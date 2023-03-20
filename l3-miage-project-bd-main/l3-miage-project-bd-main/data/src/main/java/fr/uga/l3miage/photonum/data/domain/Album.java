@@ -13,4 +13,8 @@ public class Album extends Impression{
 
     @OneToMany
     private List<Page> pages;
+
+    @ManyToOne
+    private Photo photo;
+    
 }
