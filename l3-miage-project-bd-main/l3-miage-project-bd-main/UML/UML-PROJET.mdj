@@ -1244,13 +1244,30 @@
 											"height": 13,
 											"text": "paramRetouche: String",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGG/+abi5jjw8o=",
+											"_parent": {
+												"$ref": "AAAAAAGG2zPllUBNpiQ="
+											},
+											"model": {
+												"$ref": "AAAAAAGG/+abe5jgY+8="
+											},
+											"font": "Arial;13;0",
+											"left": 381,
+											"top": 428,
+											"width": 182,
+											"height": 13,
+											"text": "idPhoto: Integer",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 376,
 									"top": 393,
 									"width": 192,
-									"height": 38
+									"height": 53
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -8437,6 +8454,15 @@
 							},
 							"name": "paramRetouche",
 							"type": "String"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGG/+abe5jgY+8=",
+							"_parent": {
+								"$ref": "AAAAAAGG2zPlk0BFM9g="
+							},
+							"name": "idPhoto",
+							"type": "Integer"
 						}
 					]
 				},
