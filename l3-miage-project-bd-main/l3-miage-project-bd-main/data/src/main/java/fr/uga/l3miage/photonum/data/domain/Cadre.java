@@ -14,4 +14,33 @@ public class Cadre extends Impression{
     @ManyToMany
     private List<Photo> photoDecadre;
 
+
+    /**
+     * @return String return the miseEnPage
+     */
+    public String getMiseEnPage() {
+        return miseEnPage;
+    }
+
+    /**
+     * @param miseEnPage the miseEnPage to set
+     */
+    public void setMiseEnPage(String miseEnPage) {
+        this.miseEnPage = miseEnPage;
+    }
+
+    /**
+     * @return List<Photo> return the photoDecadre
+     */
+    public List<Photo> getPhotoDecadre() {
+        return photoDecadre;
+    }
+
+    /**
+     * @param photoDecadre the photoDecadre to set
+     */
+    public void setPhotoDecadre(List<Photo> photoDecadre) {
+        this.photoDecadre = photoDecadre;
+    }
+
 }

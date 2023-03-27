@@ -31,4 +31,75 @@ public class Commande {
     private List<Article> articles;
 
 
+
+    /**
+     * @return Long return the idCommande
+     */
+    public Long getIdCommande() {
+        return idCommande;
+    }
+
+    /**
+     * @param idCommande the idCommande to set
+     */
+    public void setIdCommande(Long idCommande) {
+        this.idCommande = idCommande;
+    }
+
+    /**
+     * @return Date return the dateCommande
+     */
+    public Date getDateCommande() {
+        return dateCommande;
+    }
+
+    /**
+     * @param dateCommande the dateCommande to set
+     */
+    public void setDateCommande(Date dateCommande) {
+        this.dateCommande = dateCommande;
+    }
+
+    /**
+     * @return double return the prixTotal
+     */
+    public double getPrixTotal() {
+        return prixTotal;
+    }
+
+    /**
+     * @param prixTotal the prixTotal to set
+     */
+    public void setPrixTotal(double prixTotal) {
+        this.prixTotal = prixTotal;
+    }
+
+    /**
+     * @return Adresse return the adresseLivraison
+     */
+    public Adresse getAdresseLivraison() {
+        return adresseLivraison;
+    }
+
+    /**
+     * @param adresseLivraison the adresseLivraison to set
+     */
+    public void setAdresseLivraison(Adresse adresseLivraison) {
+        this.adresseLivraison = adresseLivraison;
+    }
+
+    /**
+     * @return List<Article> return the articles
+     */
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    /**
+     * @param articles the articles to set
+     */
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
+    }
+
 }

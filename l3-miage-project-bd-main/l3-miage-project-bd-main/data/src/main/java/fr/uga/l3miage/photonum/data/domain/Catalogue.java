@@ -24,4 +24,47 @@ public class Catalogue {
     @Column(name = "prixParPhoto")
     public double prixParPhoto;
 
+
+    /**
+     * @return Long return the idCatalogue
+     */
+    public Long getIdCatalogue() {
+        return idCatalogue;
+    }
+
+    /**
+     * @param idCatalogue the idCatalogue to set
+     */
+    public void setIdCatalogue(Long idCatalogue) {
+        this.idCatalogue = idCatalogue;
+    }
+
+    /**
+     * @return FormatQual return the referenceImpr
+     */
+    public FormatQual getReferenceImpr() {
+        return referenceImpr;
+    }
+
+    /**
+     * @param referenceImpr the referenceImpr to set
+     */
+    public void setReferenceImpr(FormatQual referenceImpr) {
+        this.referenceImpr = referenceImpr;
+    }
+
+    /**
+     * @return String return the typeImpr
+     */
+    public String getTypeImpr() {
+        return typeImpr;
+    }
+
+    /**
+     * @param typeImpr the typeImpr to set
+     */
+    public void setTypeImpr(String typeImpr) {
+        this.typeImpr = typeImpr;
+    }
+
 }
