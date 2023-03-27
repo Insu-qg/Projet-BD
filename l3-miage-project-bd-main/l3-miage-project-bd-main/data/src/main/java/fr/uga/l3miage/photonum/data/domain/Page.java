@@ -1,6 +1,7 @@
 package fr.uga.l3miage.photonum.data.domain;
 
 import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.*;
 
@@ -21,6 +22,6 @@ public class Page {
 
     // ----- Associations -----
     @ManyToMany
-    private List<Photo> photos;
+    private Set<Photo> photos;
 
 }
