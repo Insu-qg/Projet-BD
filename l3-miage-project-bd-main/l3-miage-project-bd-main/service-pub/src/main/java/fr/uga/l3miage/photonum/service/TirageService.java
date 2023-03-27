@@ -1,35 +1,28 @@
-package fr.uga.l3miage.library.service;
+package fr.uga.l3miage.photonum.service;
 
-import fr.uga.l3miage.library.data.domain.Author;
-import fr.uga.l3miage.library.service.base.BaseService;
+import fr.uga.l3miage.photonum.data.domain.Tirage;
+import fr.uga.l3miage.photonum.service.base.BaseService;
 
 import java.util.Collection;
 
 public interface TirageService extends BaseService<Tirage, Long> {
 
     /**
-     * Saves an author object
+     * Saves an Tirage object
      *
-     * @param author to be saved
-     * @return the author with an id
+     * @param tirage to be saved
+     * @return the tirage with an id
      */
-    Author save(Author author);
+    Tirage save(Tirage tirage);
+
 
     /**
-     * Search an author by name ignoring case
+     * Deletes a tirage
      *
-     * @param name partial or complete name of the author
-     * @return found authors
-     */
-    Collection<Author> searchByName(String name);
-
-    /**
-     * Deletes an author
-     *
-     * @param id id of the author to delete
+     * @param id id of the tirage to delete
      * @throws EntityNotFoundException when the entity do not already exists
-     * @throws DeleteAuthorException   when an author has books that are co-authored
+     * @throws DeleteTirageException when an author has books that are co-authored
      */
-    void delete(Long id) throws EntityNotFoundException, DeleteAuthorException;
+    void delete(Long id) throws EntityNotFoundException, DeleteTirageException;
 
 }
