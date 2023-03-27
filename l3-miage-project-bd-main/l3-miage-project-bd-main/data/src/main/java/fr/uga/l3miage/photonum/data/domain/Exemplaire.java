@@ -18,4 +18,47 @@ public class Exemplaire {
     @ManyToOne
     private Tirage tirage;
 
+
+    /**
+     * @return int return the quantite
+     */
+    public int getQuantite() {
+        return quantite;
+    }
+
+    /**
+     * @param quantite the quantite to set
+     */
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
+    }
+
+    /**
+     * @return Photo return the photo
+     */
+    public Photo getPhoto() {
+        return photo;
+    }
+
+    /**
+     * @param photo the photo to set
+     */
+    public void setPhoto(Photo photo) {
+        this.photo = photo;
+    }
+
+    /**
+     * @return Tirage return the tirage
+     */
+    public Tirage getTirage() {
+        return tirage;
+    }
+
+    /**
+     * @param tirage the tirage to set
+     */
+    public void setTirage(Tirage tirage) {
+        this.tirage = tirage;
+    }
+
 }
