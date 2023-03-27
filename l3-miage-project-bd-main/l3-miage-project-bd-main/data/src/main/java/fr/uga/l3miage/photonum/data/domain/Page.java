@@ -1,6 +1,6 @@
 package fr.uga.l3miage.photonum.data.domain;
 
-import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import jakarta.persistence.*;
@@ -15,7 +15,7 @@ public class Page {
     @Column(name = "idPage")
     @Id
     @GeneratedValue
-    private Long idPgae;
+    private Long idPage;
 
     @Column(name = "numero")
     private Long numero;
@@ -26,17 +26,17 @@ public class Page {
 
 
     /**
-     * @return Long return the idPgae
+     * @return Long return the idPage
      */
-    public Long getIdPgae() {
-        return idPgae;
+    public Long getIdPage() {
+        return idPage;
     }
 
     /**
-     * @param idPgae the idPgae to set
+     * @param idPage the idPgae to set
      */
-    public void setIdPgae(Long idPgae) {
-        this.idPgae = idPgae;
+    public void setIdPgae(Long idPage) {
+        this.idPage = idPage;
     }
 
     /**
@@ -65,6 +65,21 @@ public class Page {
      */
     public void setPhotos(Set<Photo> photos) {
         this.photos = photos;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Page page = (Page) o;
+        return idPage == page.idPage && numero == page.numero && Objects.equals(photos, page.photos);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idPage, numero, photos);
     }
 
 }

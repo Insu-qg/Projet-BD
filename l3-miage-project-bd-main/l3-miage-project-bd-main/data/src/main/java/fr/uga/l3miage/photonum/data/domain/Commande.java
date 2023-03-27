@@ -24,6 +24,9 @@ public class Commande {
     @Column(name = "prixTotal")
     private double prixTotal;
 
+    @Column(name = "status")
+    private Etat status;
+
     // ----- Associations -----
 
     @ManyToOne
@@ -104,6 +107,21 @@ public class Commande {
         this.articles = articles;
     }
 
+    /**
+     * @return Etat return the status
+     */
+    public Etat getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(Etat status) {
+        this.status = status;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -113,13 +131,16 @@ public class Commande {
         Commande commande = (Commande) o;
         return idCommande == commande.idCommande 
                 && Objects.equals(dateCommande, commande.dateCommande)
-                && prixTotal == commande.prixTotal;
+                && prixTotal == commande.prixTotal
+                && Objects.equals(status, commande.status);
                 
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idCommande, dateCommande, prixTotal);
+        return Objects.hash(idCommande, dateCommande, prixTotal,status);
     }
 
+
+    
 }

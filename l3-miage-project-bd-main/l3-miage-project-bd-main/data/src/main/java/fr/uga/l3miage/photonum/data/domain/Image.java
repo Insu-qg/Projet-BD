@@ -1,6 +1,6 @@
 package fr.uga.l3miage.photonum.data.domain;
 
-import java.util.List;
+import java.util.Objects;
 
 import jakarta.persistence.*;
 
@@ -114,6 +114,23 @@ public class Image {
      */
     public void setProprietaire(Client proprietaire) {
         this.proprietaire = proprietaire;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Image image = (Image) o;
+        return idImage == image.idImage  && Objects.equals(chemin, image.chemin)
+                && Objects.equals(infoPriseDeVue, image.infoPriseDeVue) 
+                && resolution == image.resolution;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idImage, infoPriseDeVue, resolution, share);
     }
 
 }

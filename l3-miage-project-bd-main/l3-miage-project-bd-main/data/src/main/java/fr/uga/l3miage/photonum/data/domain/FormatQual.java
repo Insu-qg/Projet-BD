@@ -6,5 +6,15 @@ public enum FormatQual {
     _10x15MAT,
     _10x13BRIL,
     _CALA4BRIL,
-    _CADA3MAT
+    _CADA3MAT;
+
+    private int value;
+
+    /**
+     * @return int return the value
+     */
+    public int getValue() {
+        return value;
+    }
+
 }
