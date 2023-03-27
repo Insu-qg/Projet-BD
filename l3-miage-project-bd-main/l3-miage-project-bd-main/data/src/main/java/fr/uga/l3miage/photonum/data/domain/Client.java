@@ -1,6 +1,7 @@
 package fr.uga.l3miage.photonum.data.domain;
 
 import java.util.List;
+import java.util.Objects;
 
 import jakarta.persistence.*;
 
@@ -165,6 +166,25 @@ public class Client {
      */
     public void setImpressions(List<Impression> impressions) {
         this.impressions = impressions;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Client client = (Client) o;
+        return idClient == client.idClient 
+                && Objects.equals(adresseMail, client.adresseMail)
+                && Objects.equals(nom, client.nom)
+                && Objects.equals(prenom, client.prenom)
+                && Objects.equals(motDePasse, client.motDePasse);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idClient,adresseMail,nom,prenom,motDePasse);
     }
 
 }

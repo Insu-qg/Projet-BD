@@ -25,4 +25,5 @@ public class Tirage extends Impression{
     public void setPhotosTirage(List<Photo> photosTirage) {
         this.photosTirage = photosTirage;
     }
+
 }

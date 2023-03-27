@@ -2,9 +2,10 @@ package fr.uga.l3miage.photonum.data.domain;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import jakarta.persistence.*;
-
 
 
 @Entity
@@ -22,9 +23,6 @@ public class Commande {
 
     @Column(name = "prixTotal")
     private double prixTotal;
-
-    @Column(name = "statu")
-    private Etat statu;
 
     // ----- Associations -----
 
@@ -104,6 +102,24 @@ public class Commande {
      */
     public void setArticles(List<Article> articles) {
         this.articles = articles;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Commande commande = (Commande) o;
+        return idCommande == commande.idCommande 
+                && Objects.equals(dateCommande, commande.dateCommande)
+                && prixTotal == commande.prixTotal;
+                
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idCommande, dateCommande, prixTotal);
     }
 
 }

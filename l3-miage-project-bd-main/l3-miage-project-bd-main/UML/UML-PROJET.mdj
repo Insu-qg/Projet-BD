@@ -3276,30 +3276,13 @@
 											"height": 13,
 											"text": "idCommande: Integer",
 											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAGHI2Rc5QGKR1g=",
-											"_parent": {
-												"$ref": "AAAAAAGG25zc/qsolfs="
-											},
-											"model": {
-												"$ref": "AAAAAAGHI2RcvwGER30="
-											},
-											"font": "Arial;13;0",
-											"left": 1333,
-											"top": 331,
-											"width": 159,
-											"height": 13,
-											"text": "statut: String",
-											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1328,
 									"top": 281,
 									"width": 169,
-									"height": 68
+									"height": 53
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -3355,7 +3338,7 @@
 							"left": 1328,
 							"top": 256,
 							"width": 169,
-							"height": 93,
+							"height": 78,
 							"showVisibility": false,
 							"nameCompartment": {
 								"$ref": "AAAAAAGG25zc/qsjXlU="
@@ -4992,7 +4975,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1127,
-									"top": 306,
+									"top": 303,
 									"width": 86.3408203125,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -5015,7 +4998,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 1170,
-									"top": 321,
+									"top": 318,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -5036,7 +5019,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 1171,
-									"top": 277,
+									"top": 273,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -5055,8 +5038,8 @@
 										"$ref": "AAAAAAGG/0w+VJbuy3A="
 									},
 									"font": "Arial;13;0",
-									"left": 1230,
-									"top": 308,
+									"left": 1231,
+									"top": 302,
 									"width": 100.42626953125,
 									"height": 13,
 									"alpha": 0.2954408976973655,
@@ -5079,7 +5062,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 1298,
-									"top": 322,
+									"top": 316,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -5099,7 +5082,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1302,
-									"top": 282,
+									"top": 275,
 									"width": 7.22998046875,
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -5120,8 +5103,8 @@
 										"$ref": "AAAAAAGG/0w+VJbv8zE="
 									},
 									"font": "Arial;13;0",
-									"left": 1014,
-									"top": 312,
+									"left": 1015,
+									"top": 309,
 									"width": 108.37353515625,
 									"height": 13,
 									"alpha": -0.3934505711205649,
@@ -5142,8 +5125,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1043,
-									"top": 318,
+									"left": 1044,
+									"top": 316,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -5162,7 +5145,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1028,
-									"top": 277,
+									"top": 275,
 									"width": 19.5126953125,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -5209,7 +5192,7 @@
 								"$ref": "AAAAAAGG25zc/qsiy+E="
 							},
 							"lineStyle": 1,
-							"points": "1327:301;1016:296",
+							"points": "1327:294;1016:294",
 							"nameLabel": {
 								"$ref": "AAAAAAGG/0w+VZbyq7k="
 							},
@@ -8903,15 +8886,6 @@
 							},
 							"name": "idCommande",
 							"type": "Integer"
-						},
-						{
-							"_type": "UMLAttribute",
-							"_id": "AAAAAAGHI2RcvwGER30=",
-							"_parent": {
-								"$ref": "AAAAAAGG25zc/asg3mg="
-							},
-							"name": "statut",
-							"type": "String"
 						}
 					]
 				},
