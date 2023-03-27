@@ -35,10 +35,5 @@ public class TirageRepository implements CRUDRepository<Long,Tirage> {
     public List<Tirage> all() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'all'");
-    }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
-    
+    } 
 }
