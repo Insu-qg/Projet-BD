@@ -9,9 +9,9 @@ import jakarta.persistence.OneToMany;
 public class Calendrier extends Impression {
 
     @Column(name = "annee")
-    private Integer annee;
+    private int annee;
 
-    public Integer getAnnee() {
+    public int getAnnee() {
         return annee;
     }
 

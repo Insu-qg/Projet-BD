@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import jakarta.persistence.*;
 
 
+
 @Entity
 @Table(name = "Commande")
 public class Commande {
@@ -21,6 +22,9 @@ public class Commande {
 
     @Column(name = "prixTotal")
     private double prixTotal;
+
+    @Column(name = "statu")
+    private Etat statu;
 
     // ----- Associations -----
 
