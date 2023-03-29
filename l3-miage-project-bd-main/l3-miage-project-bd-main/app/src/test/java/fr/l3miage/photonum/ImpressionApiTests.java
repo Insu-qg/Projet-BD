@@ -50,7 +50,7 @@ class ImpressionApiTests {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 
-    @Test
+ /*    @Test
     @Disabled
     void creationImpression() {
         var author = new ImpressionDTO();
@@ -59,5 +59,5 @@ class ImpressionApiTests {
         var list = this.restTemplate.getForObject("/api/v1/impressions", List.class);
         assertThat(list)
                 .hasSize(1);
-    }
+    }*/
 }
