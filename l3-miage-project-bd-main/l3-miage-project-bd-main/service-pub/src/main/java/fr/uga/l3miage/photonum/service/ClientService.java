@@ -1,6 +1,5 @@
 package fr.uga.l3miage.photonum.service;
 import fr.uga.l3miage.photonum.data.domain.Client;
-import fr.uga.l3miage.photonum.service.EntityNotFoundException;
 import fr.uga.l3miage.photonum.service.base.BaseService;
 
 

@@ -2,12 +2,16 @@ package fr.uga.l3miage.photonum.client;
 
 import fr.uga.l3miage.photonum.service.ImpressionService;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -20,13 +24,13 @@ import fr.uga.l3miage.photonum.data.domain.Image;
 import fr.uga.l3miage.photonum.data.domain.Impression;
 import fr.uga.l3miage.photonum.data.domain.Photo;
 import fr.uga.l3miage.photonum.data.domain.Tirage;
+import fr.uga.l3miage.photonum.impression.ImpressionDTO;
 import fr.uga.l3miage.photonum.impression.ImpressionMapper;
 import fr.uga.l3miage.photonum.photo.PhotoMapper;
 import fr.uga.l3miage.photonum.service.TirageService;
-
-import fr.uga.l3miage.photonum.service.ClientService;g
+import fr.uga.l3miage.photonum.service.ClientService;
 import fr.uga.l3miage.photonum.service.EntityNotFoundException;
-import fr.uga.l3miage.photonum.service.ImpressionService;
+
 import fr.uga.l3miage.photonum.tirage.TirageDTO;
 import fr.uga.l3miage.photonum.tirage.TirageMapper;
 
@@ -49,7 +53,7 @@ public class ClientController {
       
       this.clientService=clientService;
       this.clientMapper=clientMapper;
-      this.impressionMapper=this.impressionMapper;
+      this.impressionMapper=impressionMapper;
        this.impressionService=impressionService;
     }
 
@@ -91,7 +95,7 @@ public class ClientController {
    
  }
 
-void imagePartagers(Image image){
+void imagePartagers(Image image) throws EntityNotFoundException{
 
 if(image.isShare()==false){
   Client client=image.getProprietaire();
@@ -104,14 +108,11 @@ if(image.isShare()==false){
 
 
 @GetMapping("clients/id/albums")
-public List<Impression> impressions(@PathVariable("id") Long id){
-    Client client =ImpressionService.get(id);
-    List<Impression> impressions=client.getImpressions();
+public List<ImpressionDTO> impressions(@PathVariable("id") Long id) throws EntityNotFoundException{
+    Client client = clientService.get(id);
+    List<Impression> impressions = client.getImpressions();
     return impressions.stream()
-    .map(ImpressionMapper::entityToDTO)
-    .toList();
-
-
-    
+                        .map(impressionMapper::entityToDTO)
+                        .toList();
  }
 }
