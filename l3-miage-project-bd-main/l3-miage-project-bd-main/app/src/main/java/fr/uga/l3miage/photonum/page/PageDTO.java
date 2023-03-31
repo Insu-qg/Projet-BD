@@ -1,14 +1,13 @@
 package fr.uga.l3miage.photonum.page;
 
 import fr.uga.l3miage.photonum.photo.PhotoDTO;
-
-import java.util.Collection;
+import java.util.Set;
 
 public record PageDTO(
     Long idPage, 
     Long numero,
-    Collection<PhotoDTO> photos
-
-) {
+    Set<PhotoDTO> photos
     
-}
+
+) {}
+    

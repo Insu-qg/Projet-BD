@@ -7,7 +7,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 import fr.uga.l3miage.photonum.service.AlbumService;
-import fr.uga.l3miage.photonum.album.AlbumMapper;
 import fr.uga.l3miage.photonum.service.EntityNotFoundException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -18,15 +17,14 @@ public class AlbumController {
     private final AlbumService albumService;
     private final AlbumMapper albumMapper;
 
-    public AlbumController( AlbumService albumService,
-            AlbumMapper albumMapper) {
+    public AlbumController( AlbumService albumService, AlbumMapper albumMapper) {
 
         this.albumService = albumService;
         this.albumMapper = albumMapper;
     }
 
     // creation d'une impression de type album
-    @PostMapping(value = "/clients/{id}/albums", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/albums", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public AlbumDTO newAlbum(@PathVariable("id") @NotNull Long idClient, @RequestBody @Valid AlbumDTO impression) {
         try {

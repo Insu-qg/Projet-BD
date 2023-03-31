@@ -33,7 +33,6 @@ public class TirageRepository implements CRUDRepository<Long,Tirage> {
 
     @Override
     public List<Tirage> all() {
-        return null;
-    }
-    
+        throw new UnsupportedOperationException("Unimplemented method 'all'");
+    } 
 }

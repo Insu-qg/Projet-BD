@@ -7,7 +7,7 @@ import java.util.Collection;
 
 @Mapper(componentModel = "spring")
 public interface CalendrierMapper {
-    CalendrierDTO entityToDTO(Calendrier calendrier);
+    CalendrierDTO entityToDTO(Object saved);
 
     Collection<CalendrierDTO> entityToDTO(Iterable<Calendrier> calendriers);
 
