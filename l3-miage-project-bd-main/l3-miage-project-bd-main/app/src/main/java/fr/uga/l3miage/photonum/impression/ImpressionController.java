@@ -1,32 +1,19 @@
 package fr.uga.l3miage.photonum.impression;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import fr.uga.l3miage.photonum.cadre.CadreDTO;
 import fr.uga.l3miage.photonum.cadre.CadreMapper;
 import fr.uga.l3miage.photonum.calendrier.CalendrierDTO;
 import fr.uga.l3miage.photonum.calendrier.CalendrierMapper;
-import fr.uga.l3miage.photonum.data.domain.Impression;
 import fr.uga.l3miage.photonum.service.AlbumService;
 import fr.uga.l3miage.photonum.service.CadreService;
 import fr.uga.l3miage.photonum.service.CalendrierService;
-<<<<<<< HEAD
-=======
 import fr.uga.l3miage.photonum.service.EntityNotFoundException;
->>>>>>> bee3166fc7c82800c539606cc3c38c6458cc9e1b
 import fr.uga.l3miage.photonum.service.ImpressionService;
 import fr.uga.l3miage.photonum.service.TirageService;
 import fr.uga.l3miage.photonum.tirage.TirageDTO;
@@ -48,15 +35,10 @@ public class ImpressionController {
     private final CalendrierMapper calendrierMapper;
     private final CadreService cadreService;
     private final CadreMapper cadreMapper;
-
     @Autowired
-<<<<<<< HEAD
     public ImpressionController(TirageService tirageService, TirageMapper tirageMapper, AlbumService albumService,
             AlbumMapper albumMapper, CalendrierService calendrierService, CalendrierMapper calendrierMapper,
-            CadreService cadreService, CadreMapper cadreMapper) {
-=======
-    public ImpressionController(TirageService tirageService, TirageMapper tirageMapper,AlbumService albumService, AlbumMapper albumMapper, CalendrierService calendrierService, CalendrierMapper calendrierMapper,CadreService cadreService,CadreMapper cadreMapper) {
->>>>>>> bee3166fc7c82800c539606cc3c38c6458cc9e1b
+            CadreService cadreService, CadreMapper cadreMapper, ImpressionService impressionService,ImpressionMapper impressionMapper) {
         this.tirageService = tirageService;
         this.albumService = albumService;
         this.calendrierService = calendrierService;
@@ -70,72 +52,60 @@ public class ImpressionController {
     // creation d'une impression de type tirage
     @PostMapping(value = "/clients/{id}/tirages", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public TirageDTO newTirage(@RequestBody @Valid TirageDTO impression) {
-        var saved = tirageService.save(tirageMapper.dtoToEntity(impression));
-        return tirageMapper.entityToDTO(saved);
+    public TirageDTO newTirage(@PathVariable("id") @NotNull Long idClient, @RequestBody @Valid TirageDTO impression) {
+        try {
+            final var entity = tirageService.save(idClient, tirageMapper.dtoToEntity(impression));
+            return tirageMapper.entityToDTO(entity);
+        } catch (EntityNotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, null, e);
+        } catch (IllegalArgumentException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, null, e);
+        }
     }
 
     // creation d'une impression de type album
     @PostMapping(value = "/clients/{id}/albums", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public AlbumDTO newAlbum(@RequestBody @Valid AlbumDTO impression) {
-        var saved = albumService.save(albumMapper.dtoToEntity(impression));
-        return albumMapper.entityToDTO(saved);
+    public AlbumDTO newAlbum(@PathVariable("id") @NotNull Long idClient, @RequestBody @Valid AlbumDTO impression) {
+        try {
+            final var entity = albumService.save(idClient, albumMapper.dtoToEntity(impression));
+            return albumMapper.entityToDTO(entity);
+        } catch (EntityNotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, null, e);
+        } catch (IllegalArgumentException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, null, e);
+        }
     }
 
     // creation d'une impression de type calendrier
     @PostMapping(value = "/clients/{id}/calendriers", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-<<<<<<< HEAD
-    public CalendrierDTO newImpression(@RequestBody @Valid CalendrierDTO impression) {
-=======
-    public CalendrierDTO newCalendrier(@RequestBody @Valid CalendrierDTO impression) {
->>>>>>> bee3166fc7c82800c539606cc3c38c6458cc9e1b
-        var saved = calendrierService.save(calendrierMapper.dtoToEntity(impression));
-        return calendrierMapper.entityToDTO(saved);
+    public CalendrierDTO newImpression(@PathVariable("id") @NotNull Long idClient, @RequestBody @Valid CalendrierDTO impression) {
+        try {
+            final var entity = calendrierService.save(idClient, calendrierMapper.dtoToEntity(impression));
+            return calendrierMapper.entityToDTO(entity);
+        } catch (EntityNotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, null, e);
+        } catch (IllegalArgumentException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, null, e);
+        }
     }
 
     // creation d'une impression de type cadre
     @PostMapping(value = "/clients/{id}/cadres", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-<<<<<<< HEAD
-    public CadreDTO newImpression(@RequestBody @Valid CadreDTO cadre) {
-=======
-    public CadreDTO newCadre(@RequestBody @Valid CadreDTO cadre) {
->>>>>>> bee3166fc7c82800c539606cc3c38c6458cc9e1b
-        var saved = cadreService.save(cadreMapper.dtoToEntity(cadre));
-        return cadreMapper.entityToDTO(saved);
-    }
-    
-    /*//recuperation d'une impression de type tirage 
-    @GetMapping(value = "/tirages/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public TirageDTO tirage(@PathVariable("id") @NotNull Long id) {
+    public CadreDTO newImpression(@PathVariable("id") @NotNull Long idClient, @RequestBody @Valid CadreDTO impression)  {
         try {
-            return tirageMapper.entityToDTO(tirageService.get(id));
+            final var entity = cadreService.save(idClient, cadreMapper.dtoToEntity(impression));
+            return cadreMapper.entityToDTO(entity);
         } catch (EntityNotFoundException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, null, e);
+        } catch (IllegalArgumentException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, null, e);
         }
     }
-    //recuperation d'une impression de type album
-    @PostMapping(value = "/clients/{id}/albums", consumes = MediaType.APPLICATION_JSON_VALUE)
 
-    public ImpressionDTO newAlbum(@PathVariable("id") @NotNull Long id) {
-        var saved = albumService.save(albumMapper.dtoToEntity(impression));
-        return albumMapper.entityToDTO(saved);
-    }
-    //recuperation d'une impression de type calendrier
-    @PostMapping(value = "/clients/{id}/calendriers", consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.CREATED)
-    public ImpressionDTO newImpression(@RequestBody @Valid ImpressionDTO impression) {
-        var saved = calendrierService.save(calendrierMapper.dtoToEntity(impression));
-        return calendrierMapper.entityToDTO(saved);
-    }
+    
+ 
 
-    //recuperation d'une impression de type cadre
-    @PostMapping(value = "cadres", consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.CREATED)
-    public ImpressionDTO newImpression(@RequestBody @Valid CadreDTO cadre) {
-        var saved = cadreService.save(cadreMapper.dtoToEntity(cadre));
-        return cadreMapper.entityToDTO(saved);
-    }*/
 }

@@ -1,12 +1,12 @@
 package fr.uga.l3miage.photonum.calendrier;
 
-import fr.uga.l3miage.photonum.data.domain.Page;
+import fr.uga.l3miage.photonum.page.PageDTO;
 
-import java.util.Set;
+import java.util.Collection;
 
 public record CalendrierDTO(
     int annee,
-    Set<Page> pagesCalendrier
+    Collection<PageDTO> pages
 ) {
     
 }

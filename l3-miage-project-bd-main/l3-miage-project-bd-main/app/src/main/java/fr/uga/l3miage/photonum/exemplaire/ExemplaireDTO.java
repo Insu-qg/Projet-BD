@@ -1,12 +1,13 @@
 package fr.uga.l3miage.photonum.exemplaire;
 
-import fr.uga.l3miage.photonum.data.domain.Photo;
-import fr.uga.l3miage.photonum.data.domain.Tirage;
+import fr.uga.l3miage.photonum.photo.PhotoDTO;
+import fr.uga.l3miage.photonum.tirage.TirageDTO;
 
 public record ExemplaireDTO(
+    Long id, 
     int quantite,
-    Photo photo,
-    Tirage tirage
+    PhotoDTO photo,
+    TirageDTO tirage
 
 ) {
     

@@ -16,8 +16,8 @@
 spring:
   datasource:
     url: jdbc:oracle:thin:@im2ag-oracle.univ-grenoble-alpes.fr:1521:im2ag
-    username: grangeq 
-    password:
+    username: condese
+    password: Conde622382426@
   jpa:
     properties:
       hibernate:
@@ -26,3 +26,4 @@ spring:
           auto: update
         dialect: org.hibernate.dialect.Oracle10gDialect
     open-in-view: false
+

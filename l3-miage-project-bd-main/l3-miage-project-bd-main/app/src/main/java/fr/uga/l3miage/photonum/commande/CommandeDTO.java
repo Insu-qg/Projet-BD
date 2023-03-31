@@ -1,17 +1,17 @@
 package fr.uga.l3miage.photonum.commande;
 
 import java.sql.Date;
-import java.util.List;
-
-import fr.uga.l3miage.photonum.data.domain.Adresse;
-import fr.uga.l3miage.photonum.data.domain.Article;
+import java.util.Collection;
+import fr.uga.l3miage.photonum.adresse.AdresseDTO;
+import fr.uga.l3miage.photonum.article.ArticleDTO;
 
 public record CommandeDTO (
     Long idCommande,
     Date dateCommande,
-    Double prixTotal,
-    List<Article> articlesCommande,
-    Adresse adresseCommande
+    double prixTotal,
+    String status,
+    Collection<ArticleDTO> articles,
+    AdresseDTO adresseLivraison
 
 ) {
     

@@ -6,7 +6,7 @@ import java.util.Objects;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Cadre")
+@DiscriminatorValue("cadre")
 public class Cadre extends Impression{
 
     @Column(name = "miseEnPage")

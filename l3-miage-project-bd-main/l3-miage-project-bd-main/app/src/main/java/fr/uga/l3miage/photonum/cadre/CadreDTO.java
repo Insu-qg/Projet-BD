@@ -1,12 +1,11 @@
 package fr.uga.l3miage.photonum.cadre;
 
-import java.util.List;
-
-import fr.uga.l3miage.photonum.data.domain.Photo;
+import java.util.Collection;
+import fr.uga.l3miage.photonum.photo.PhotoDTO;
 
 public record CadreDTO (
     String miseEnPage,
-    List<Photo> photoCadre
+    Collection<PhotoDTO> photoDecadre
 ) {
     
 }

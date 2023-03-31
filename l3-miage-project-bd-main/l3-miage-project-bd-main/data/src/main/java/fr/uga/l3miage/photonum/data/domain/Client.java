@@ -1,7 +1,9 @@
 package fr.uga.l3miage.photonum.data.domain;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.*;
 
@@ -39,8 +41,8 @@ public class Client {
     @OneToMany
     private List<Image> images;
 
-    @OneToMany
-    private List<Impression> impressions;
+    @ManyToMany
+    private Set<Impression> impressions;
 
     /**
      * @return Long return the idClient
@@ -157,15 +159,22 @@ public class Client {
     /**
      * @return List<Impression> return the impressions
      */
-    public List<Impression> getImpressions() {
+    public Set<Impression> getImpressions() {
         return impressions;
     }
 
     /**
      * @param impressions the impressions to set
      */
-    public void setImpressions(List<Impression> impressions) {
+    public void setImpressions(Set<Impression> impressions) {
         this.impressions = impressions;
+    }
+
+    public void addImpression(Impression impression) {
+        if (this.impressions == null) {
+            this.impressions = new HashSet<>();
+        }
+        this.impressions.add(impression);
     }
 
     @Override

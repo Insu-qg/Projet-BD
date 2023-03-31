@@ -3,15 +3,17 @@ package fr.uga.l3miage.photonum.data.domain;
 import java.util.Objects;
 import java.util.Set;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
+@Entity
+@DiscriminatorValue("calendrier")
 public class Calendrier extends Impression {
 
     @Column(name = "annee")
     private int annee;
 
     @OneToMany
+    @Column(name = "pages")
     private Set<Page> pages;
 
 

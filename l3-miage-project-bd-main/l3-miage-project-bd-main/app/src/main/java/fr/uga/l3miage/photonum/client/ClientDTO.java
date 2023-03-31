@@ -1,12 +1,10 @@
 package fr.uga.l3miage.photonum.client;
 
-import fr.uga.l3miage.photonum.data.domain.Image;
-
-import java.util.List;
-
-import fr.uga.l3miage.photonum.data.domain.Adresse;
-import fr.uga.l3miage.photonum.data.domain.Commande;
-import fr.uga.l3miage.photonum.data.domain.Impression;
+import java.util.Collection;
+import fr.uga.l3miage.photonum.adresse.AdresseDTO;
+import fr.uga.l3miage.photonum.commande.CommandeDTO;
+import fr.uga.l3miage.photonum.image.ImageDTO;
+import fr.uga.l3miage.photonum.impression.ImpressionDTO;
 
 public record ClientDTO(
     Long idClient,
@@ -14,10 +12,10 @@ public record ClientDTO(
     String nom,
     String prenom,
     String motDePasse,
-    List<Image> images,
-    List<Adresse> adresseClients,
-    List<Impression> imprClients,
-    List<Commande> commandeCLients
+    Collection<ImageDTO> images,
+    Collection<AdresseDTO> adresses,
+    Collection<ImpressionDTO> impressions,
+    Collection<CommandeDTO> commandes
 
 
 ) {
