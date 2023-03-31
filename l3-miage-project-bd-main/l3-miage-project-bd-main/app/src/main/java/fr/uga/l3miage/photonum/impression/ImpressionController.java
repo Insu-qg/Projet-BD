@@ -23,10 +23,7 @@ import fr.uga.l3miage.photonum.data.domain.Impression;
 import fr.uga.l3miage.photonum.service.AlbumService;
 import fr.uga.l3miage.photonum.service.CadreService;
 import fr.uga.l3miage.photonum.service.CalendrierService;
-<<<<<<< HEAD
-=======
 import fr.uga.l3miage.photonum.service.EntityNotFoundException;
->>>>>>> bee3166fc7c82800c539606cc3c38c6458cc9e1b
 import fr.uga.l3miage.photonum.service.ImpressionService;
 import fr.uga.l3miage.photonum.service.TirageService;
 import fr.uga.l3miage.photonum.tirage.TirageDTO;
@@ -50,13 +47,7 @@ public class ImpressionController {
     private final CadreMapper cadreMapper;
 
     @Autowired
-<<<<<<< HEAD
-    public ImpressionController(TirageService tirageService, TirageMapper tirageMapper, AlbumService albumService,
-            AlbumMapper albumMapper, CalendrierService calendrierService, CalendrierMapper calendrierMapper,
-            CadreService cadreService, CadreMapper cadreMapper) {
-=======
     public ImpressionController(TirageService tirageService, TirageMapper tirageMapper,AlbumService albumService, AlbumMapper albumMapper, CalendrierService calendrierService, CalendrierMapper calendrierMapper,CadreService cadreService,CadreMapper cadreMapper) {
->>>>>>> bee3166fc7c82800c539606cc3c38c6458cc9e1b
         this.tirageService = tirageService;
         this.albumService = albumService;
         this.calendrierService = calendrierService;
@@ -86,11 +77,7 @@ public class ImpressionController {
     // creation d'une impression de type calendrier
     @PostMapping(value = "/clients/{id}/calendriers", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-<<<<<<< HEAD
-    public CalendrierDTO newImpression(@RequestBody @Valid CalendrierDTO impression) {
-=======
     public CalendrierDTO newCalendrier(@RequestBody @Valid CalendrierDTO impression) {
->>>>>>> bee3166fc7c82800c539606cc3c38c6458cc9e1b
         var saved = calendrierService.save(calendrierMapper.dtoToEntity(impression));
         return calendrierMapper.entityToDTO(saved);
     }
@@ -98,11 +85,7 @@ public class ImpressionController {
     // creation d'une impression de type cadre
     @PostMapping(value = "/clients/{id}/cadres", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-<<<<<<< HEAD
-    public CadreDTO newImpression(@RequestBody @Valid CadreDTO cadre) {
-=======
     public CadreDTO newCadre(@RequestBody @Valid CadreDTO cadre) {
->>>>>>> bee3166fc7c82800c539606cc3c38c6458cc9e1b
         var saved = cadreService.save(cadreMapper.dtoToEntity(cadre));
         return cadreMapper.entityToDTO(saved);
     }
