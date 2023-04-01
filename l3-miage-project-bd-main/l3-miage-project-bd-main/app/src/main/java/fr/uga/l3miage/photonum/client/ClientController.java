@@ -48,71 +48,58 @@ public class ClientController {
 
 
     @Autowired
-    public void ClientController(ImpressionMapper impressionMapper, ClientService clientService, ClientMapper clientMapper) {
-      
-      
-      this.clientService=clientService;
-      this.clientMapper=clientMapper;
-      this.impressionMapper=impressionMapper;
-       this.impressionService=impressionService;
+    public ClientController(ImpressionMapper impressionMapper, ClientService clientService, ClientMapper clientMapper) {
+        this.clientService=clientService;
+        this.clientMapper=clientMapper;
+        this.impressionMapper=impressionMapper;
+        // this.impressionService=impressionService;
     }
 
     @PostMapping("clients")
     @ResponseStatus(HttpStatus.CREATED)
-   
-   public ClientDTO newClient(@RequestBody ClientDTO client) { 
-    try{
-        if(client==null || client.nom()==null||client.prenom()==null){
+    public ClientDTO newClient(@RequestBody ClientDTO client) { 
+        try{
+            if(client==null || client.nom()==null||client.prenom()==null){
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            }
+        
+        Client client1=clientMapper.dtoToEntity(client);
+        Client newClient=clientService.save(client1);
+            ClientDTO clientDTO=clientMapper.entityToDTO(newClient);
+            return clientDTO;
+
+        } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-    
-       Client client1=clientMapper.dtoToEntity(client);
-       Client newClient=clientService.save(client1);
-        ClientDTO clientDTO=clientMapper.entityToDTO(newClient);
-         return clientDTO;
-
-    } catch (Exception e) {
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-    }         
-     
-
    }
-   
 
    @PutMapping("clients/{id}")
    public void updateClient(@RequestBody ClientDTO  client, @PathVariable("id") Long id) throws EntityNotFoundException {
     if(client.idClient()==id){
-
         Client clientEntity=clientMapper.dtoToEntity(client);
-        
         Client clientUpdated=clientService.update(clientEntity);
-     clientMapper.entityToDTO(clientUpdated);
-
+        clientMapper.entityToDTO(clientUpdated);
     }
     else{
-         throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
-   
  }
 
 void imagePartagers(Image image) throws EntityNotFoundException{
-
-if(image.isShare()==false){
-  Client client=image.getProprietaire();
-  clientService.delete(client.getIdClient());
-   image.setShare(true);
+    if(image.isShare()==false){
+    Client client=image.getProprietaire();
+    clientService.delete(client.getIdClient());
+    image.setShare(true);
+    }
 }
 
 
-}
-
-
-@GetMapping("clients/id/albums")
-public List<ImpressionDTO> impressions(@PathVariable("id") Long id) throws EntityNotFoundException{
-    Client client = clientService.get(id);
-    List<Impression> impressions = client.getImpressions();
-    return impressions.stream()
-                        .map(impressionMapper::entityToDTO)
-                        .toList();
- }
+    @GetMapping("clients/id/albums")
+    public List<ImpressionDTO> impressions(@PathVariable("id") Long id) throws EntityNotFoundException{
+        Client client = clientService.get(id);
+        List<Impression> impressions = client.getImpressions();
+        return impressions.stream()
+                            .map(impressionMapper::entityToDTO)
+                            .toList();
+    }
 }

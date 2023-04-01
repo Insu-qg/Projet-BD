@@ -34,7 +34,6 @@ public class CadreRepository implements CRUDRepository<Long,Cadre> {
 
     @Override
     public List<Cadre> all() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'all'");
     }
     
