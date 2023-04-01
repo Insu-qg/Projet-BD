@@ -40,4 +40,12 @@ public class AdresseRepository implements CRUDRepository<Long, Adresse>{
     public List<Adresse> all() {
         return entityManager.createQuery("select a from Adresse a order by a.ville", Adresse.class).getResultList();
     }
+
+    //recuperer toutes les adresse d'un client spécfique
+    //recuperer toutes les adresses d'un client spécifique
+    public List<Adresse> allByClient(Long idClient) {
+        return entityManager.createQuery("SELECT a FROM Adresse a JOIN a.client ac  WHERE ac.idClient = :idClient ORDER BY a.ville", Adresse.class)
+            .setParameter("idClient", idClient)
+            .getResultList();
+    }
 }

@@ -30,10 +30,17 @@ public class CadreRepository implements CRUDRepository<Long,Cadre> {
     public void delete(Cadre cadre) {
         entityManager.remove(cadre);
     }
-
+    // retourne tous les cadre du système
     @Override
     public List<Cadre> all() {
-        throw new UnsupportedOperationException("Unimplemented method 'all'");
+        return entityManager.createQuery("select a from Cadre c ", Cadre.class).getResultList();
+    }
+
+    // recuperations de tous les cadre d'un client spécifique
+    public List<Cadre> allByClient(Long idClient) {
+        return entityManager.createQuery("select c from Cadre c join c.client cl where cl.idClient = :idClient", Cadre.class)
+            .setParameter("idClient", idClient)
+            .getResultList();
     }
     
 }

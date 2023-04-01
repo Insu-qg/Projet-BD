@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.uga.l3miage.photonum.data.domain.Image;
+import fr.uga.l3miage.photonum.data.domain.Photo;
 import jakarta.persistence.EntityManager;
 
 public class ImageRepository implements CRUDRepository<Long,Image> {
@@ -25,11 +26,21 @@ public class ImageRepository implements CRUDRepository<Long,Image> {
     public Image get(Long id) {
         return entityManager.find(Image.class, id);
     }
-
+    // on verifie d'abord si une image est utilisé par une photo si oui on ne fait rien sinon on la supprime
     @Override
     public void delete(Image image) {
-        entityManager.remove(image);
+        boolean isInUse = entityManager.createQuery("select p from Photo p where p.image = :image", Photo.class)
+                                      .setParameter("image", image)
+                                      .setMaxResults(1)
+                                      .getResultList()
+                                      .size() > 0;
+        if (isInUse) {
+            throw new IllegalArgumentException("The image cannot be deleted because it is being used by at least one photo in an ongoing print.");
+        } else {
+            entityManager.remove(image);
+        }
     }
+    
     //recuperation de toutes les images de tous les clients
     @Override
     public List<Image> all() {

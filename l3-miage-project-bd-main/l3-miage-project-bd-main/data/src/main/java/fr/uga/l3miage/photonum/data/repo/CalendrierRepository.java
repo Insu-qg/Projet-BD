@@ -29,11 +29,17 @@ public class CalendrierRepository implements CRUDRepository<Long,Calendrier> {
     public void delete(Calendrier calendrier) {
         entityManager.remove(calendrier);
     }
+    //recupere tous les calendrier
+@Override
+public List<Calendrier> all() {
+    return entityManager.createQuery("select c from Calendrier c", Calendrier.class).getResultList();
+}
 
-    @Override
-    public List<Calendrier> all() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'all'");
-    }
-    
+//recupere tous les calendrier d'un client donné
+public List<Calendrier> allByClient(Long idClient) {
+    return entityManager.createQuery("select c from Calendrier c join c.client cl where cl.idClient = :idClient", Calendrier.class)
+                        .setParameter("idClient", idClient)
+                        .getResultList();
+}
+
 }

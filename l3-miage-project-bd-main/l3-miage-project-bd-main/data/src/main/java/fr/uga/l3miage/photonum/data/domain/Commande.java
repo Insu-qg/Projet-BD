@@ -32,8 +32,13 @@ public class Commande {
     @ManyToOne
     private Adresse adresseLivraison;
 
+    @ManyToOne
+    private Client client;
+
     @OneToMany
     private List<Article> articles;
+
+
 
 
 

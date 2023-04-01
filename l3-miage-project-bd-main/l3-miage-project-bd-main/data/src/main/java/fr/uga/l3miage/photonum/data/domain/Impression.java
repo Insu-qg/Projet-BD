@@ -1,9 +1,6 @@
 package fr.uga.l3miage.photonum.data.domain;
 
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
-
 import jakarta.persistence.*;
 
 // ajout model pour heritage
@@ -20,8 +17,8 @@ public class Impression {
     @GeneratedValue
     private Long idImpression; // remplacer par String si besoin
 
-    @ManyToMany(mappedBy = "impressions")
-    Set<Client> clients;
+    @ManyToOne
+    Client client;
 
     /**
      * @return Long return the idImpression
@@ -40,22 +37,15 @@ public class Impression {
     /**
      * @return  return thes clients
      */
-    public Set<Client> getClients() {
-        return clients;
+    public Client getClient() {
+        return client;
     }
 
     /**
      * @param 
      */
-    public void setClients(Set<Client> clients) {
-        this.clients = clients;
-    }
-
-    public void addClient(Client client) {
-        if (this.clients == null) {
-            this.clients = new HashSet<>();
-        }
-        this.clients.add(client);
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     @Override

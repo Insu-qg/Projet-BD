@@ -3,6 +3,8 @@ package fr.uga.l3miage.photonum.data.repo;
 import fr.uga.l3miage.photonum.data.domain.Client;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
+
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -39,16 +41,17 @@ public class ClientRepository implements CRUDRepository<Long, Client> {
     }
 
     /**
-     * Recherche un auteur par nom (ou partie du nom) de façon insensible à la
+     * Recherche un client par son nom par nom (ou partie du nom) de façon insensible à la
      * casse.
      *
      * @param namePart tout ou partie du nomde l'auteur
-     * @return une liste d'auteurs trié par nom
+     * @return une liste de client trié par nom
      */
     public List<Client> searchByName(String namePart) {
-        String jpql = "SELECT a FROM Client a WHERE LOWER(a.nom) LIKE LOWER(:namePart) ORDER BY a.nom";
-        List<Client> clients = entityManager.createQuery(jpql, Client.class)
-                .setParameter("namePart", "%" + namePart.toLowerCase() + "%").getResultList();
-        return clients;
+        String query = "SELECT c FROM Client c WHERE LOWER(c.nom) LIKE LOWER(:namePart) ORDER BY c.nom";
+        TypedQuery<Client> typedQuery = entityManager.createQuery(query, Client.class);
+        typedQuery.setParameter("namePart", "%" + namePart + "%");
+        return typedQuery.getResultList();
     }
+    
 }
