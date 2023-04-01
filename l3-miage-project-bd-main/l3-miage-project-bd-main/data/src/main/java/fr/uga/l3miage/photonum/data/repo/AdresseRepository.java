@@ -8,7 +8,7 @@ import fr.uga.l3miage.photonum.data.domain.Adresse;
 import jakarta.persistence.EntityManager;
 
 public class AdresseRepository implements CRUDRepository<Long, Adresse>{
-
+    
     private EntityManager entityManager;
     @Autowired
     public AdresseRepository(EntityManager entityManager){
@@ -30,10 +30,14 @@ public class AdresseRepository implements CRUDRepository<Long, Adresse>{
     public void delete(Adresse adresse) {
         entityManager.remove(adresse);
     }
-
+    
+    /**
+     * Renvoie toutes les adresses
+     *
+     * @return une liste d'adresses trié par la ville
+     */
     @Override
     public List<Adresse> all() {
-        return entityManager.createQuery("from Adresse",Adresse.class).getResultList();
+        return entityManager.createQuery("select a from Adresse a order by a.ville", Adresse.class).getResultList();
     }
-    
 }
