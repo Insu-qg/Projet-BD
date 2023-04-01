@@ -1,7 +1,6 @@
 package fr.uga.l3miage.photonum.client;
 
 import fr.uga.l3miage.photonum.service.ImpressionService;
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,23 +15,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import fr.uga.l3miage.photonum.album.AlbumMapper;
-import fr.uga.l3miage.photonum.cadre.CadreMapper;
-import fr.uga.l3miage.photonum.calendrier.CalendrierMapper;
 import fr.uga.l3miage.photonum.data.domain.Client;
 import fr.uga.l3miage.photonum.data.domain.Image;
 import fr.uga.l3miage.photonum.data.domain.Impression;
-import fr.uga.l3miage.photonum.data.domain.Photo;
-import fr.uga.l3miage.photonum.data.domain.Tirage;
 import fr.uga.l3miage.photonum.impression.ImpressionDTO;
 import fr.uga.l3miage.photonum.impression.ImpressionMapper;
-import fr.uga.l3miage.photonum.photo.PhotoMapper;
-import fr.uga.l3miage.photonum.service.TirageService;
 import fr.uga.l3miage.photonum.service.ClientService;
+import fr.uga.l3miage.photonum.service.DeleteException;
 import fr.uga.l3miage.photonum.service.EntityNotFoundException;
-
-import fr.uga.l3miage.photonum.tirage.TirageDTO;
-import fr.uga.l3miage.photonum.tirage.TirageMapper;
 
 
 @RestController
@@ -48,11 +38,13 @@ public class ClientController {
 
 
     @Autowired
-    public ClientController(ImpressionMapper impressionMapper, ClientService clientService, ClientMapper clientMapper) {
-        this.clientService=clientService;
-        this.clientMapper=clientMapper;
-        this.impressionMapper=impressionMapper;
-        // this.impressionService=impressionService;
+    public void ClientController(ImpressionMapper impressionMapper, ClientService clientService, ClientMapper clientMapper,ImpressionService impressionService) {
+      
+      
+      this.clientService=clientService;
+      this.clientMapper=clientMapper;
+      this.impressionMapper=impressionMapper;
+       this.impressionService=impressionService;
     }
 
     @PostMapping("clients")
@@ -86,20 +78,28 @@ public class ClientController {
  }
 
 void imagePartagers(Image image) throws EntityNotFoundException{
-    if(image.isShare()==false){
-    Client client=image.getProprietaire();
+
+if(image.isShare()==false){
+  Client client=image.getProprietaire();
+  try {
     clientService.delete(client.getIdClient());
-    image.setShare(true);
-    }
+} catch (DeleteException e) {
+    // TODO Auto-generated catch block
+    e.printStackTrace();
+}
+   image.setShare(true);
 }
 
 
-    @GetMapping("clients/id/albums")
-    public List<ImpressionDTO> impressions(@PathVariable("id") Long id) throws EntityNotFoundException{
-        Client client = clientService.get(id);
-        List<Impression> impressions = client.getImpressions();
-        return impressions.stream()
-                            .map(impressionMapper::entityToDTO)
-                            .toList();
-    }
+}
+
+
+@GetMapping("clients/id/albums")
+public List<ImpressionDTO> impressions(@PathVariable("id") Long id) throws EntityNotFoundException{
+    Client client = clientService.get(id);
+    List<Impression> impressions = (List<Impression>) client.getImpressions();
+    return impressions.stream()
+                        .map(impressionMapper::entityToDTO)
+                        .toList();
+ }
 }

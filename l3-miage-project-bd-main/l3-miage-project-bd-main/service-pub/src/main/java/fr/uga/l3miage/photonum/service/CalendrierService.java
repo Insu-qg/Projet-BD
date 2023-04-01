@@ -8,9 +8,9 @@ public interface CalendrierService extends BaseService<Calendrier, Long> {
      * Saves an album object
      *
      * @param calendrier to be saved
-     * @return the album with an id
+     * @return the calendrier with an id
      */
-    Calendrier save(Calendrier calendrier);
+    Calendrier save(Long idClient,Calendrier calendrier) throws EntityNotFoundException;
 
     /**
      * Deletes an album

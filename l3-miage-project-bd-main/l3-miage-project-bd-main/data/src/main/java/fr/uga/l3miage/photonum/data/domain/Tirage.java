@@ -6,7 +6,7 @@ import java.util.Objects;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Tirage")
+@DiscriminatorValue("tirage")
 public class Tirage extends Impression{
 
     @ManyToMany

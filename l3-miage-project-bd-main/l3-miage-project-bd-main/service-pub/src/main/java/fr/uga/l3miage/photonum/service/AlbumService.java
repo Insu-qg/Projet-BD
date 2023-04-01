@@ -10,7 +10,7 @@ public interface AlbumService extends BaseService<Album, Long> {
      * @param album to be saved
      * @return the album with an id
      */
-    Album save(Album album);
+    Album save(Long idClient,Album album) throws EntityNotFoundException;
 
     /**
      * Deletes an album

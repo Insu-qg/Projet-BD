@@ -24,7 +24,7 @@ public class Image {
     private Long resolution;
 
     @Column(name = "share")
-    private Boolean share;
+    private boolean share;
 
     // ----- Associations -----
     @ManyToOne
@@ -91,14 +91,14 @@ public class Image {
     /**
      * @return Boolean return the share
      */
-    public Boolean isShare() {
+    public boolean isShare() {
         return share;
     }
 
     /**
      * @param share the share to set
      */
-    public void setShare(Boolean share) {
+    public void setShare(boolean share) {
         this.share = share;
     }
 

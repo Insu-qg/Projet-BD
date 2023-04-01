@@ -10,7 +10,7 @@ public interface CadreService extends BaseService<Cadre, Long> {
      * @param cadre to be saved
      * @return the cadre with an id
      */
-    Cadre save(Cadre cadre);
+    Cadre save(Long idClient,Cadre cadre) throws EntityNotFoundException;
 
     /**
      * Deletes an cadre
