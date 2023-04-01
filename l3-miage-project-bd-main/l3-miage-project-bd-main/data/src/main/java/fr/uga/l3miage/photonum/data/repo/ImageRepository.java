@@ -30,31 +30,38 @@ public class ImageRepository implements CRUDRepository<Long,Image> {
     public void delete(Image image) {
         entityManager.remove(image);
     }
-
+    //recuperation de toutes les images de tous les clients
     @Override
     public List<Image> all() {
         return entityManager.createQuery("select i from Image i", Image.class).getResultList();
     }
-
+    //recuperation de toutes les images d'un client'
+    public List<Image> allByClient(Long idClient) {
+    return entityManager.createQuery("select i from Image i join i.clients c where c.id = :idClient", Image.class)
+            .setParameter("idClient", idClient)
+            .getResultList();
+    }
+    //recuperation de toutes les images partagé peut importe le client
     public List<Image> allShared() {
-        return entityManager.createQuery("select i from Image i where i.isShared = true order by i.id", Image.class).getResultList();
+        return entityManager.createQuery("select i from Image i where i.share = true order by i.id", Image.class).getResultList();
     }
 
-    
-    public List<Image> updateImage(Long idImage) {
-        if(Boolean.TRUE.equals(this.get(idImage).isShare())){
-            return entityManager.createQuery("UPDATE Image i SET i.share = false WHERE i.idImage = :idImage", Image.class).setParameter("idImage", idImage).getResultList();
-        }else{
-            return entityManager.createQuery("UPDATE Image i SET i.share = true WHERE i.idImage = :image.idImage", Image.class).setParameter("idImage", idImage).getResultList();
+    //recuperation de toutes les images partagé par un client spécifique
+    public List<Image> allSharedByClientId(Long idClient) {
+        return entityManager.createQuery("select i from Image i join i.clients c where i.share = true and c.idClient = :idClient order by i.id", Image.class)
+                .setParameter("idClient", idClient)
+                .getResultList();
+    }
+    //mettre a jour une image en la rendant share true si share=false et sinon si share=true on ne fait rien
+    public void updateImage(Long idImage) {
+        Image imageToUpdate = this.get(idImage);
+        if (imageToUpdate != null) {
+            if (!imageToUpdate.isShare()) {
+                imageToUpdate.setShare(true);
+            }
+            entityManager.merge(imageToUpdate);
+        } else {
+            throw new IllegalArgumentException("No image found with the given id");
         }
-        
-        
-    }
-
-    // Test pour les images d'un client donné
-    public List<Image> allImageForClientById(Long id) {
-        return entityManager.createQuery("select i from Image i where i.proprietaire.idClient = :id order by i.idImage", Image.class)
-        .setParameter("id", id)
-        .getResultList();
     }
 }
