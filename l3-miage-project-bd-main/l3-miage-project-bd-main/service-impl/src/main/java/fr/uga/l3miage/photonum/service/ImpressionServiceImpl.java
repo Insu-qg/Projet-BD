@@ -48,6 +48,6 @@ public class ImpressionServiceImpl implements ImpressionService {
     private void bind(Long idClient, Impression impression) throws EntityNotFoundException {
         Client client = clientService.get(idClient);
         client.addImpression(impression);
-        impression.addClient(client);
+        impression.setClient(client);
     }
 }

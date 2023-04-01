@@ -48,7 +48,7 @@ public class CalendrierServiceImpl implements CalendrierService {
     private void bind(Long idClient, Calendrier calendrier) throws EntityNotFoundException {
         Client client = clientService.get(idClient);
         client.addImpression(calendrier);
-        calendrier.addClient(client);
+        calendrier.setClient(client);
     }
 
 

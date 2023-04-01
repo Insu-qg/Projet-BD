@@ -1,6 +1,7 @@
 package fr.uga.l3miage.photonum.service;
 
 import fr.uga.l3miage.photonum.data.domain.Client;
+import fr.uga.l3miage.photonum.data.domain.Photo;
 import fr.uga.l3miage.photonum.data.domain.Tirage;
 import fr.uga.l3miage.photonum.data.repo.TirageRepository;
 import jakarta.transaction.Transactional;
@@ -48,7 +49,7 @@ public class TirageServiceImpl implements TirageService {
     private void bind(Long idClient, Tirage tirage) throws EntityNotFoundException {
         Client client = clientService.get(idClient);
         client.addImpression(tirage);
-        tirage.addClient(client);
+        tirage.setClient(client);
     }
 
 
@@ -56,5 +57,19 @@ public class TirageServiceImpl implements TirageService {
     public void delete(Long id) throws EntityNotFoundException, DeleteTirageException {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    }
+
+
+    @Override
+    public Collection<Tirage> getTiragesByPhoto(Photo photo) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTiragesByPhoto'");
+    }
+
+
+    @Override
+    public Collection<Tirage> getTiragesByClient(Client client) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTiragesByClient'");
     }
 }

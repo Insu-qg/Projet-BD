@@ -48,7 +48,7 @@ public class CadreServiceImpl implements CadreService {
     private void bind(Long idClient, Cadre cadre) throws EntityNotFoundException {
         Client client = clientService.get(idClient);
         client.addImpression(cadre);
-        cadre.addClient(client);
+        cadre.setClient(client);
     }
 
 

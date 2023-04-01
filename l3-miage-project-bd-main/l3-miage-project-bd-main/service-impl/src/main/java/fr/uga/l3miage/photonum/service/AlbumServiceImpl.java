@@ -48,7 +48,7 @@ public class AlbumServiceImpl implements AlbumService {
     private void bind(Long idClient, Album album) throws EntityNotFoundException {
         Client client = clientService.get(idClient);
         client.addImpression(album);
-        album.addClient(client);
+        album.setClient(client);
     }
 
 
