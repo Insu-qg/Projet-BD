@@ -47,7 +47,7 @@ public class ClientController {
        this.impressionService=impressionService;
     }
 
-    @PostMapping("clients")
+    @PostMapping("/clients")
     @ResponseStatus(HttpStatus.CREATED)
     public ClientDTO newClient(@RequestBody ClientDTO client) { 
         try{
@@ -65,7 +65,7 @@ public class ClientController {
         }
    }
 
-   @PutMapping("clients/{id}")
+   @PutMapping("/clients/{id}")
    public void updateClient(@RequestBody ClientDTO  client, @PathVariable("id") Long id) throws EntityNotFoundException {
     if(client.idClient()==id){
         Client clientEntity=clientMapper.dtoToEntity(client);

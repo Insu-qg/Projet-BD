@@ -50,14 +50,12 @@ public class PhotoController {
     // création d'une nouvelle photo
     @PostMapping(value = "/clients/{id}/photos", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public PhotoDTO newPhoto(@PathVariable("id") @NotNull Long idClient, @RequestBody @Valid PhotoDTO photoDTO) {
+    public PhotoDTO newPhoto(@PathVariable("id") @NotNull Long idClient, @RequestBody @Valid PhotoDTO photoDTO) throws EntityNotFoundException {
         try {
             final var photoEntity = photoMapper.dtoToEntity(photoDTO);
             final var savedPhoto = photoService.save(idClient, photoEntity);
             return photoMapper.entityToDTO(savedPhoto);
-        } catch (EntityNotFoundException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, null, e);
-        }  catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, null, e);
         }
     }
