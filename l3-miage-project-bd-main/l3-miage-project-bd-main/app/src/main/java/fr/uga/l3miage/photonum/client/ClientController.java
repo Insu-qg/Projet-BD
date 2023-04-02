@@ -1,6 +1,8 @@
 package fr.uga.l3miage.photonum.client;
 
 import fr.uga.l3miage.photonum.service.ImpressionService;
+import jakarta.validation.Valid;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,52 +51,43 @@ public class ClientController {
 
     @PostMapping("/clients")
     @ResponseStatus(HttpStatus.CREATED)
-    public ClientDTO newClient(@RequestBody ClientDTO client) { 
+    public ClientDTO newClient(@RequestBody @Valid ClientDTO client) { 
         try{
-            if(client==null || client.nom()==null||client.prenom()==null){
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-            }
-        
-        Client client1=clientMapper.dtoToEntity(client);
-        Client newClient=clientService.save(client1);
+            Client client1=clientMapper.dtoToEntity(client);
+            Client newClient=clientService.save(client1);
             ClientDTO clientDTO=clientMapper.entityToDTO(newClient);
             return clientDTO;
-
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
    }
 
    @PutMapping("/clients/{id}")
-   public void updateClient(@RequestBody ClientDTO  client, @PathVariable("id") Long id) throws EntityNotFoundException {
-    if(client.idClient()==id){
-        Client clientEntity=clientMapper.dtoToEntity(client);
-        Client clientUpdated=clientService.update(clientEntity);
-        clientMapper.entityToDTO(clientUpdated);
+   public void updateClient(@RequestBody @Valid ClientDTO  client, @PathVariable("id") Long id) throws EntityNotFoundException {
+        if(client.idClient()==id){
+            Client clientEntity=clientMapper.dtoToEntity(client);
+            Client clientUpdated=clientService.update(clientEntity);
+            clientMapper.entityToDTO(clientUpdated);
+        }
+        else{
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
     }
-    else{
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+
+    void imagePartagers(Image image) throws EntityNotFoundException{
+        if(image.isShare()==false){
+        Client client=image.getProprietaire();
+        try {
+            clientService.delete(client.getIdClient());
+        } catch (DeleteException e) {
+            e.printStackTrace();
+        }
+        image.setShare(true);
+        }
     }
- }
-
-void imagePartagers(Image image) throws EntityNotFoundException{
-
-if(image.isShare()==false){
-  Client client=image.getProprietaire();
-  try {
-    clientService.delete(client.getIdClient());
-} catch (DeleteException e) {
-    // TODO Auto-generated catch block
-    e.printStackTrace();
-}
-   image.setShare(true);
-}
 
 
-}
-
-
-@GetMapping("clients/id/albums")
+@GetMapping("clients/{id}/albums")
 public List<ImpressionDTO> impressions(@PathVariable("id") Long id) throws EntityNotFoundException{
     Client client = clientService.get(id);
     List<Impression> impressions = (List<Impression>) client.getImpressions();

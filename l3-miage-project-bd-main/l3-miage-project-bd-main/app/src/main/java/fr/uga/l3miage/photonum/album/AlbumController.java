@@ -24,7 +24,7 @@ public class AlbumController {
     }
 
     // creation d'une impression de type album
-    @PostMapping(value = "/albums", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/clients/{id}/albums", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public AlbumDTO newAlbum(@PathVariable("id") @NotNull Long idClient, @RequestBody @Valid AlbumDTO impression) {
         try {
