@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@im2ag-oracle.univ-grenoble-alpes.fr:1521:im2ag
+    username: damessis
+    password: 776568bd0c
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        hbm2ddl:
+          auto: update
+        dialect: org.hibernate.dialect.Oracle10gDialect
+    open-in-view: false

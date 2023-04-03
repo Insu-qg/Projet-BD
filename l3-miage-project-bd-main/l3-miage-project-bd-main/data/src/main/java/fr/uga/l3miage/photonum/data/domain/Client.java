@@ -38,7 +38,7 @@ public class Client {
     @OneToMany
     private List<Commande> commandes;
 
-    @OneToMany
+    @OneToMany(mappedBy = "proprietaire")
     private List<Image> images;
 
     @ManyToMany
