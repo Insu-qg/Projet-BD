@@ -12,10 +12,11 @@ import jakarta.persistence.*;
 @Table(name = "Commande")
 public class Commande {
 
-    // ---- Attributs ----
+    // ---- Attributs ---- sdaffaffafaff
     @Id
     @GeneratedValue
     private Long idCommande;
+
 
     @Column(name = "dateCommande")
     @DateTimeFormat
